@@ -35,5 +35,5 @@ For emergencies always direct guests to call reception at ${HOTEL.phone}.`,
 
   const data = await response.json()
   return data.content?.find((b) => b.type === 'text')?.text
-    ?? 'I'm having trouble connecting. Please call reception for assistance.'
+    ?? "I'm having trouble connecting. Please call reception for assistance."
 }
