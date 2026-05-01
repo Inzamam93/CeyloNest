@@ -1,8 +1,8 @@
-# 🌿 CeyloNest (Demo project)
+# 🌿 CeyX-Butler (Demo project)
 
 > AI-powered hotel guest communication platform — built for Sri Lankan hospitality.
 
-CeyloNest replaces outdated in-room phones with a **zero-download Progressive Web App** (PWA). Guests scan a QR code, get a multilingual AI concierge, request hotel services, and book local experiences — all from their own device. Staff manage everything from a live dashboard.
+CeyX-Butler replaces outdated in-room phones with a **zero-download Progressive Web App** (PWA). Guests scan a QR code, get a multilingual AI concierge, request hotel services, and book local experiences — all from their own device. Staff manage everything from a live dashboard.
 
 ---
 
@@ -31,8 +31,8 @@ CeyloNest replaces outdated in-room phones with a **zero-download Progressive We
 ### 1. Clone & install
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/ceylonest.git
-cd ceylonest
+git clone https://github.com/Inzamam93/CeyX-Butler.git
+cd CeyX-Butler
 npm install
 ```
 
@@ -76,7 +76,7 @@ Open [http://localhost:5173](http://localhost:5173) in your browser.
 ## 🏗️ Project Structure
 
 ```
-ceylonest/
+CeyX-Butler/
 ├── public/                  # Static assets (favicon, PWA icons)
 ├── src/
 │   ├── components/

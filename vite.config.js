@@ -9,8 +9,8 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.svg', 'robots.txt'],
       manifest: {
-        name: 'CeyloNest',
-        short_name: 'CeyloNest',
+        name: 'CeyX-Butler',
+        short_name: 'CeyX-Butler',
         description: 'AI-powered hotel guest communication for Sri Lankan hotels',
         theme_color: '#1a3d2b',
         background_color: '#f7f0e3',

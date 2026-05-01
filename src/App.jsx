@@ -44,7 +44,7 @@ export default function App() {
       {!isStaff && (
         <div style={{ position: 'fixed', bottom: 0, left: '50%', transform: 'translateX(-50%)', width: 430, background: 'rgba(255,254,249,0.97)', backdropFilter: 'blur(16px)', borderTop: '1px solid rgba(15,36,25,0.07)', padding: '10px 20px 28px', display: 'flex', justifyContent: 'center', pointerEvents: 'none' }}>
           <p style={{ fontSize: 10, color: 'rgba(107,124,110,0.55)', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 500 }}>
-            Powered by CeyloNest ✦ {HOTEL.name}
+            Powered by CeyX ✦ {HOTEL.name}
           </p>
         </div>
       )}
