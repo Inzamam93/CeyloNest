@@ -3,10 +3,11 @@ import { HOTEL, LANGS } from '../data/config'
 import styles from './Header.module.css'
 
 const TABS = [
-  { id: 'home',     label: (t) => t.services   },
-  { id: 'chat',     label: (t) => t.chat        },
-  { id: 'local',    label: (t) => t.local       },
-  { id: 'requests', label: (t) => t.requests    },
+  { id: 'home',          label: (t) => t.services      },
+  { id: 'chat',          label: (t) => t.chat          },
+  { id: 'local',         label: (t) => t.local         },
+  { id: 'requests',      label: (t) => t.requests      },
+  { id: 'accessibility', label: (t) => t.accessibility },
 ]
 
 export default function Header({ lang, setLang, view, setView, isStaff, setIsStaff }) {

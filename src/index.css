@@ -67,3 +67,84 @@ body {
 .slide-up { animation: slideUp 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) both; }
 .fade-in  { animation: fadeIn 0.3s ease both; }
 .pulse    { animation: pulse 2s infinite; }
+
+/* ─── ACCESSIBILITY MODE: HIGH CONTRAST ─────────────────────────────────── */
+/*
+  Overrides design tokens with maximum-contrast values.
+  All colour references that use var() automatically inherit these.
+*/
+.mode-high-contrast {
+  --cream:   #000000;
+  --sand:    #1a1a1a;
+  --white:   #0d0d0d;
+  --dark:    #ffffff;
+  --muted:   #e0e0e0;
+  --jungle:  #ffffff;
+  --forest:  #cccccc;
+  --gold:    #ffff00;
+  --gold-lt: #ffff66;
+  --teal:    #00ffff;
+  --teal-lt: #66ffff;
+  --terra:   #ff6666;
+}
+
+/* Ensure text is always readable on any surface */
+.mode-high-contrast * {
+  border-color: rgba(255, 255, 255, 0.4) !important;
+}
+
+.mode-high-contrast a,
+.mode-high-contrast button {
+  outline: 2px solid transparent;
+}
+
+.mode-high-contrast a:focus-visible,
+.mode-high-contrast button:focus-visible {
+  outline: 3px solid #ffff00;
+  outline-offset: 2px;
+}
+
+/* ─── ACCESSIBILITY MODE: LARGE TEXT ─────────────────────────────────────── */
+/*
+  Scales up all font sizes and touch targets site-wide.
+  Targets body-level font so rem units cascade correctly.
+*/
+.mode-large-text {
+  font-size: 18px;
+}
+
+.mode-large-text button,
+.mode-large-text a,
+.mode-large-text [role='radio'],
+.mode-large-text [role='checkbox'] {
+  min-height: 52px;
+  min-width: 52px;
+}
+
+.mode-large-text p,
+.mode-large-text span,
+.mode-large-text label {
+  font-size: 1.15em;
+  line-height: 1.6;
+}
+
+/* ─── ACCESSIBILITY MODE: SIMPLE ─────────────────────────────────────────── */
+/*
+  Removes all animations and decorative motion.
+  Reduces visual noise for neurodivergent and anxiety-sensitive guests.
+*/
+.mode-simple *,
+.mode-simple *::before,
+.mode-simple *::after {
+  animation: none !important;
+  transition: none !important;
+}
+
+.mode-simple .slide-up,
+.mode-simple .fade-in,
+.mode-simple .pulse {
+  animation: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+}
+

@@ -5,7 +5,16 @@ import ChatView from './components/ChatView'
 import LocalView from './components/LocalView'
 import { RequestsView, StaffDashboard } from './components/RequestViews'
 import RequestModal from './components/RequestModal'
+import AccessibilityView from './components/AccessibilityView'
 import { INITIAL_REQUESTS, HOTEL } from './data/config'
+
+// Map accessMode keys to global CSS class names applied to the root container
+const ACCESS_MODE_CLASS = {
+  standard:     '',
+  highContrast: 'mode-high-contrast',
+  large:        'mode-large-text',
+  simple:       'mode-simple',
+}
 
 export default function App() {
   const [lang, setLang]       = useState('EN')
@@ -14,13 +23,27 @@ export default function App() {
   const [requests, setRequests] = useState(INITIAL_REQUESTS)
   const [modal, setModal]     = useState(null)
 
+  // ── Accessibility state ──────────────────────────────────────────────────
+  const [accessMode,   setAccessMode]   = useState('standard')
+  const [guestNeeds,   setGuestNeeds]   = useState([])
+  const [sensoryPrefs, setSensoryPrefs] = useState([])
+  const [mobilityPref, setMobilityPref] = useState('None')
+  const [dndPlus,      setDndPlus]      = useState(false)
+  const [textFirst,    setTextFirst]    = useState(false)
+  const [medReminder,  setMedReminder]  = useState('')
+
   function handleRequest(service) { setModal(service) }
   function submitRequest(req) {
     setRequests((prev) => [{ ...req, id: Date.now() }, ...prev])
   }
 
+  const modeClass = ACCESS_MODE_CLASS[accessMode] || ''
+
   return (
-    <div style={{ maxWidth: 430, margin: '0 auto', minHeight: '100vh', background: 'var(--cream)', position: 'relative', overflow: 'hidden' }}>
+    <div
+      className={modeClass}
+      style={{ maxWidth: 430, margin: '0 auto', minHeight: '100vh', background: 'var(--cream)', position: 'relative', overflow: 'hidden' }}
+    >
       <Header
         lang={lang} setLang={setLang}
         view={view} setView={setView}
@@ -32,10 +55,22 @@ export default function App() {
           <StaffDashboard requests={requests} setRequests={setRequests} />
         ) : (
           <>
-            {view === 'home'     && <ServiceGrid   lang={lang} onRequest={handleRequest} />}
-            {view === 'chat'     && <ChatView      lang={lang} />}
-            {view === 'local'    && <LocalView     lang={lang} />}
-            {view === 'requests' && <RequestsView  lang={lang} requests={requests} />}
+            {view === 'home'          && <ServiceGrid   lang={lang} onRequest={handleRequest} />}
+            {view === 'chat'          && <ChatView      lang={lang} />}
+            {view === 'local'         && <LocalView     lang={lang} />}
+            {view === 'requests'      && <RequestsView  lang={lang} requests={requests} />}
+            {view === 'accessibility' && (
+              <AccessibilityView
+                lang={lang}
+                accessMode={accessMode}      setAccessMode={setAccessMode}
+                guestNeeds={guestNeeds}      setGuestNeeds={setGuestNeeds}
+                sensoryPrefs={sensoryPrefs}  setSensoryPrefs={setSensoryPrefs}
+                mobilityPref={mobilityPref}  setMobilityPref={setMobilityPref}
+                dndPlus={dndPlus}            setDndPlus={setDndPlus}
+                textFirst={textFirst}        setTextFirst={setTextFirst}
+                medReminder={medReminder}    setMedReminder={setMedReminder}
+              />
+            )}
           </>
         )}
       </div>

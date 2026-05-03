@@ -1,0 +1,401 @@
+/* ─── ACCESSIBILITY VIEW ──────────────────────────────────────────────────── */
+
+.container {
+  padding: 20px 16px 120px;
+}
+
+/* ─── SECTION HEADERS ─────────────────────────────────────────────────────── */
+.sectionTitle {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 10px;
+  margin-top: 22px;
+}
+.sectionTitle:first-of-type {
+  margin-top: 0;
+}
+
+/* ─── MODE CARDS ──────────────────────────────────────────────────────────── */
+.modeGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+.modeCard {
+  background: var(--white);
+  border: 2px solid transparent;
+  border-radius: 14px;
+  padding: 14px;
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+  box-shadow: 0 1px 8px rgba(15,36,25,0.07);
+  font-family: 'DM Sans', sans-serif;
+}
+.modeCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(15,36,25,0.12);
+}
+.modeCardActive {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 1px var(--gold), 0 4px 16px rgba(201,168,76,0.18);
+}
+
+.modeIcon {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--jungle);
+  line-height: 1;
+  margin-bottom: 6px;
+  font-family: 'DM Sans', sans-serif;
+}
+.modeLabel {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--dark);
+  display: block;
+  margin-bottom: 3px;
+}
+.modeDesc {
+  font-size: 10px;
+  color: var(--muted);
+  line-height: 1.4;
+}
+.modeCheck {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--gold);
+  border: none;
+  margin-bottom: 6px;
+  position: relative;
+}
+.modeCheck::after {
+  content: '✓';
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: var(--dark);
+  font-weight: 800;
+}
+
+/* ─── GUEST NEED CHIPS ────────────────────────────────────────────────────── */
+.needsRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.needChip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 24px;
+  border: 1.5px solid var(--sand);
+  background: var(--white);
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--dark);
+  transition: all 0.2s;
+}
+.needChipActive {
+  background: var(--jungle);
+  border-color: var(--jungle);
+  color: var(--cream);
+}
+.needChip span:first-child {
+  font-size: 15px;
+}
+
+/* ─── PREF ROWS (sensory / mobility) ─────────────────────────────────────── */
+.prefList {
+  background: var(--white);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 1px 8px rgba(15,36,25,0.06);
+}
+
+.prefItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 16px;
+  border-bottom: 1px solid rgba(15,36,25,0.05);
+  cursor: pointer;
+  gap: 10px;
+  transition: background 0.15s;
+}
+.prefItem:last-child {
+  border-bottom: none;
+}
+.prefItem:hover {
+  background: rgba(15,36,25,0.025);
+}
+
+.prefItemLabel {
+  font-size: 13px;
+  color: var(--dark);
+  flex: 1;
+  line-height: 1.3;
+}
+.prefItemSub {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 1px;
+}
+
+/* ─── TOGGLE SWITCH ───────────────────────────────────────────────────────── */
+.toggle {
+  position: relative;
+  width: 42px;
+  height: 24px;
+  flex-shrink: 0;
+}
+.toggleInput {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+.toggleTrack {
+  position: absolute;
+  inset: 0;
+  background: var(--sand);
+  border-radius: 24px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.toggleTrackOn {
+  background: var(--jungle);
+}
+.toggleThumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: white;
+  transition: transform 0.2s;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.18);
+}
+.toggleThumbOn {
+  transform: translateX(18px);
+}
+
+/* ─── RADIO SELECT ROW ────────────────────────────────────────────────────── */
+.radioRow {
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 1px 8px rgba(15,36,25,0.06);
+}
+.radioItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 16px;
+  border-bottom: 1px solid rgba(15,36,25,0.05);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.radioItem:last-child {
+  border-bottom: none;
+}
+.radioItem:hover {
+  background: rgba(15,36,25,0.025);
+}
+.radioDot {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid var(--sand);
+  flex-shrink: 0;
+  transition: all 0.2s;
+  position: relative;
+}
+.radioDotActive {
+  border-color: var(--gold);
+  background: var(--gold);
+}
+.radioDotActive::after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  background: var(--dark);
+  border-radius: 50%;
+}
+.radioLabel {
+  font-size: 13px;
+  color: var(--dark);
+}
+
+/* ─── DND+ BANNER ─────────────────────────────────────────────────────────── */
+.dndBanner {
+  background: linear-gradient(135deg, var(--jungle), var(--forest));
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  box-shadow: 0 4px 16px rgba(15,36,25,0.18);
+}
+.dndBannerActive {
+  background: linear-gradient(135deg, #1a2a40, #2a3d5a);
+}
+.dndIconWrap {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+.dndTextCol {
+  flex: 1;
+}
+.dndTitle {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--cream);
+  margin-bottom: 2px;
+}
+.dndDesc {
+  font-size: 11px;
+  color: rgba(247,240,227,0.65);
+  line-height: 1.4;
+}
+
+/* ─── EMERGENCY CALL CARD ─────────────────────────────────────────────────── */
+.emergencyCard {
+  background: linear-gradient(135deg, #dc2626, #ef4444);
+  border-radius: 16px;
+  padding: 16px 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 4px 18px rgba(220,38,38,0.28);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.emergencyCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(220,38,38,0.38);
+}
+.emergencyIconWrap {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+.emergencyTitle {
+  font-size: 14px;
+  font-weight: 700;
+  color: white;
+}
+.emergencySubtitle {
+  font-size: 11px;
+  color: rgba(255,255,255,0.75);
+  margin-top: 2px;
+}
+
+/* ─── MEDICATION REMINDER ─────────────────────────────────────────────────── */
+.medCard {
+  background: var(--white);
+  border-radius: 14px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  box-shadow: 0 1px 8px rgba(15,36,25,0.07);
+}
+.medIcon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: #fef3c7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+.medContent {
+  flex: 1;
+}
+.medLabel {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--dark);
+  margin-bottom: 2px;
+}
+.medInput {
+  font-size: 12px;
+  color: var(--muted);
+  background: var(--cream);
+  border: 1px solid var(--sand);
+  border-radius: 8px;
+  padding: 5px 10px;
+  font-family: 'DM Sans', sans-serif;
+  width: 100%;
+  margin-top: 6px;
+  outline: none;
+}
+.medInput:focus {
+  border-color: var(--gold);
+}
+
+/* ─── WCAG BADGE ──────────────────────────────────────────────────────────── */
+.wcagBadge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(42,107,107,0.08);
+  border: 1px solid rgba(42,107,107,0.18);
+  border-radius: 12px;
+  padding: 10px 14px;
+  margin-top: 6px;
+}
+.wcagBadgeIcon {
+  font-size: 18px;
+}
+.wcagBadgeText {
+  font-size: 11px;
+  color: var(--teal);
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+/* ─── SECTION CARD (info box) ─────────────────────────────────────────────── */
+.infoBox {
+  background: var(--sand);
+  border-radius: 12px;
+  padding: 12px 14px;
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.5;
+}
