@@ -34,5 +34,5 @@ export async function askClaude(messages, guestPrefs = {}) {
   const { reply } = await response.json()
 
   return reply
-    ?? `I'm having trouble right now. Please message your butler or call reception at ${HOTEL.phone}.`
+    ?? "I'm having trouble right now. Please message your butler or call reception at ${HOTEL.phone}."
 }
