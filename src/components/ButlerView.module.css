@@ -1,0 +1,14 @@
+.butlerCard   { padding:20px; margin-bottom:14px; }
+.butlerTop    { display:flex; gap:14px; align-items:flex-start; margin-bottom:14px; }
+.nameRow      { display:flex; justify-content:space-between; align-items:flex-start; }
+.statusBadge  { font-size:10px; font-weight:700; padding:3px 8px; border-radius:20px; flex-shrink:0; }
+.online       { background:#d1fae5; color:#059669; }
+.offline      { background:#f3f4f6; color:#6b7280; }
+.langChip     { background:var(--sand); color:var(--jungle); font-size:10px; font-weight:600; padding:2px 8px; border-radius:20px; }
+.divider      { border-top:1px solid var(--sand); padding-top:14px; margin-top:0; }
+.messageRow   { display:flex; gap:8px; }
+.msgInput     { flex:1; background:var(--cream); border:1px solid var(--sand); border-radius:24px; padding:10px 14px; font-size:13px; color:var(--dark); outline:none; font-family:var(--font-sans); }
+.sentBox      { background:#d1fae5; border-radius:10px; padding:10px 14px; display:flex; gap:8px; align-items:center; }
+.aiHeader     { display:flex; gap:8px; align-items:center; margin-bottom:10px; }
+.aiIconWrap   { width:28px; height:28px; border-radius:8px; background:var(--jungle); display:flex; align-items:center; justify-content:center; }
+.sendIconBtn  { width:40px; height:40px; border-radius:20px; background:linear-gradient(135deg,var(--gold),var(--gold-lt)); border:none; cursor:pointer; display:flex; align-items:center; justify-content:center; flex-shrink:0; }

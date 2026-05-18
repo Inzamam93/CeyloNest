@@ -1,0 +1,23 @@
+.avatar {
+  background: var(--gold-lt);
+  color: var(--jungle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  flex-shrink: 0;
+  font-family: var(--font-sans);
+}
+
+.dot {
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid var(--white);
+}
+
+.online  { background: #10b981; }
+.offline { background: #9ca3af; }

@@ -3,14 +3,14 @@ import { HOTEL, LANGS } from '../data/config'
 import styles from './Header.module.css'
 
 const TABS = [
-  { id: 'home',          label: (t) => t.services      },
-  { id: 'chat',          label: (t) => t.chat          },
-  { id: 'local',         label: (t) => t.local         },
-  { id: 'requests',      label: (t) => t.requests      },
-  { id: 'accessibility', label: (t) => t.accessibility },
+  { id: 'home',     label: (t) => t.services  },
+  { id: 'butler',   label: (t) => t.butler    },
+  { id: 'explore',  label: (t) => t.explore   },
+  { id: 'requests', label: (t) => t.requests  },
+  { id: 'profile',  label: (t) => t.profile   },
 ]
 
-export default function Header({ lang, setLang, view, setView, isStaff, setIsStaff }) {
+export default function Header({ lang, setLang, view, setView, isStaff, setIsStaff, pendingAlerts = 0 }) {
   const t = LANGS[lang]
   const hour = new Date().getHours()
   const greeting = hour < 12 ? t.goodMorning : t.goodEvening
@@ -18,34 +18,22 @@ export default function Header({ lang, setLang, view, setView, isStaff, setIsSta
   return (
     <div className={styles.heroBg}>
       <div className={styles.topRow}>
-        {/* Left: greeting + lang chips */}
         <div>
           <div className={styles.langRow}>
             {Object.keys(LANGS).map((l) => (
-              <button
-                key={l}
-                className={`${styles.langChip} ${lang === l ? styles.langChipActive : ''}`}
-                onClick={() => setLang(l)}
-              >
-                {l}
-              </button>
+              <button key={l} className={`${styles.langChip} ${lang === l ? styles.langChipActive : ''}`} onClick={() => setLang(l)}>{l}</button>
             ))}
           </div>
           <p className={styles.greeting}>{greeting}</p>
           <h1 className={`serif ${styles.roomTitle}`}>
-            {t.room} {HOTEL.room}
+            {t.room} {HOTEL.room} · <span className={styles.hotelAccent}>{HOTEL.shortName}</span>
           </h1>
-          <p className={styles.hotelName}>{HOTEL.name}</p>
         </div>
-
-        {/* Right: view toggle + checkout */}
         <div className={styles.rightCol}>
-          <button
-            className={`${styles.viewToggle} ${isStaff ? styles.viewToggleActive : ''}`}
-            onClick={() => setIsStaff(!isStaff)}
-          >
-            <LayoutDashboard size={12} />
-            {isStaff ? 'Staff View' : 'Guest View'}
+          <button className={`${styles.viewToggle} ${isStaff ? styles.viewToggleActive : ''}`} onClick={() => setIsStaff(!isStaff)}>
+            <LayoutDashboard size={11} />
+            {isStaff ? 'Staff' : 'Guest'}
+            {pendingAlerts > 0 && <span className={styles.alertBadge}>{pendingAlerts}</span>}
           </button>
           <div className={styles.checkoutBox}>
             <p className={styles.checkoutLabel}>Check-out</p>
@@ -53,22 +41,14 @@ export default function Header({ lang, setLang, view, setView, isStaff, setIsSta
           </div>
         </div>
       </div>
-
-      {/* WiFi banner */}
       <div className={styles.wifiBanner}>
         <span className={styles.wifiLeft}>📶 {HOTEL.wifi}</span>
         <span className={styles.wifiPass}>{HOTEL.wifiPass}</span>
       </div>
-
-      {/* Tab bar (guest only) */}
       {!isStaff && (
         <div className={styles.tabBar}>
           {TABS.map((tab) => (
-            <button
-              key={tab.id}
-              className={`${styles.tabBtn} ${view === tab.id ? styles.tabBtnActive : ''}`}
-              onClick={() => setView(tab.id)}
-            >
+            <button key={tab.id} className={`${styles.tabBtn} ${view === tab.id ? styles.tabBtnActive : ''}`} onClick={() => setView(tab.id)}>
               {tab.label(t)}
             </button>
           ))}

@@ -1,0 +1,17 @@
+.grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+
+.serviceCard { background:var(--white); border-radius:var(--radius-lg); padding:16px; display:flex; flex-direction:column; gap:12px; cursor:pointer; box-shadow:var(--shadow-card); transition:transform 0.2s, box-shadow 0.2s; }
+.serviceCard:hover { transform:translateY(-2px); box-shadow:var(--shadow-lift); }
+
+.iconWrap { width:44px; height:44px; border-radius:12px; display:flex; align-items:center; justify-content:center; }
+
+.actionRow { display:flex; flex-direction:column; gap:10px; margin-top:4px; }
+
+.emergencyBtn { background:linear-gradient(135deg, var(--terra), #d4724e); border-radius:var(--radius-lg); padding:14px 16px; display:flex; align-items:center; gap:12px; text-decoration:none; }
+.directionsBtn { background:var(--teal); border-radius:var(--radius-lg); padding:14px 16px; display:flex; align-items:center; gap:12px; cursor:pointer; }
+
+.actionIcon { background:rgba(255,255,255,0.2); border-radius:10px; width:40px; height:40px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.actionLabel { color:white; font-weight:700; font-size:13px; }
+.actionSub   { color:rgba(255,255,255,0.75); font-size:11px; }
+
+.ecoCard { background:#f0fdf4; border:1px solid #bbf7d0; border-radius:var(--radius-lg); padding:14px 16px; display:flex; align-items:center; gap:10px; }

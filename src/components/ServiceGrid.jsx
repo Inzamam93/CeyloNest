@@ -1,38 +1,29 @@
 import { Phone, ChefHat, Sparkles, Leaf, Wrench, Car, Navigation, ChevronRight } from 'lucide-react'
 import { HOTEL, LANGS, getServices } from '../data/config'
+import styles from './ServiceGrid.module.css'
 
-const ICON_MAP = { reception: Phone, roomservice: ChefHat, housekeeping: Sparkles, spa: Leaf, maintenance: Wrench, transport: Car }
+const ICON_MAP = {
+  reception: Phone, roomservice: ChefHat, housekeeping: Sparkles,
+  spa: Leaf, maintenance: Wrench, transport: Car,
+}
 
 export default function ServiceGrid({ lang, onRequest }) {
   const t = LANGS[lang]
   const services = getServices(t)
 
   return (
-    <div style={{ padding: '20px 16px 100px' }}>
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
+    <div style={{ padding: '16px 16px 100px' }}>
+      <div className={styles.grid}>
         {services.map((s, i) => {
           const Icon = ICON_MAP[s.id]
           return (
             <div
               key={s.id}
-              className="slide-up"
+              className={`slide-up ${styles.serviceCard}`}
+              style={{ animationDelay: `${i * 0.05}s` }}
               onClick={() => onRequest({ ...s, icon: Icon })}
-              style={{
-                animationDelay: `${i * 0.05}s`,
-                background: 'var(--white)',
-                borderRadius: 14,
-                padding: 16,
-                display: 'flex',
-                flexDirection: 'column',
-                gap: 12,
-                cursor: 'pointer',
-                boxShadow: '0 1px 8px rgba(15,36,25,0.07)',
-                transition: 'transform 0.2s, box-shadow 0.2s',
-              }}
-              onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 4px 16px rgba(15,36,25,0.12)' }}
-              onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = '0 1px 8px rgba(15,36,25,0.07)' }}
             >
-              <div style={{ width: 44, height: 44, borderRadius: 12, background: s.bg, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <div className={styles.iconWrap} style={{ background: s.bg }}>
                 <Icon size={20} color={s.color} />
               </div>
               <div>
@@ -44,33 +35,42 @@ export default function ServiceGrid({ lang, onRequest }) {
         })}
       </div>
 
-      {/* Emergency + Directions */}
-      <div style={{ marginTop: 14, display: 'flex', flexDirection: 'column', gap: 10 }}>
-        <a href={`tel:${HOTEL.phone}`} style={{ textDecoration: 'none' }}>
-          <div style={{ background: 'linear-gradient(135deg, var(--terra), #d4724e)', borderRadius: 14, padding: '14px 18px', display: 'flex', alignItems: 'center', gap: 12 }}>
-            <div style={{ background: 'rgba(255,255,255,0.2)', borderRadius: 10, width: 40, height: 40, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <Phone size={18} color="white" />
-            </div>
-            <div style={{ flex: 1 }}>
-              <p style={{ color: 'white', fontWeight: 700, fontSize: 13 }}>Emergency / Direct Line</p>
-              <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: 11 }}>{HOTEL.phone}</p>
-            </div>
-            <ChevronRight size={16} color="rgba(255,255,255,0.6)" />
+      <div className={styles.actionRow}>
+        <a href={`tel:${HOTEL.phone}`} className={styles.emergencyBtn}>
+          <div className={styles.actionIcon}><Phone size={18} color="white" /></div>
+          <div style={{ flex: 1 }}>
+            <p className={styles.actionLabel}>Emergency / Direct Line</p>
+            <p className={styles.actionSub}>{HOTEL.phone}</p>
           </div>
+          <ChevronRight size={16} color="rgba(255,255,255,0.6)" />
         </a>
 
         <div
-          style={{ background: 'var(--teal)', borderRadius: 14, padding: '14px 18px', display: 'flex', alignItems: 'center', gap: 12, cursor: 'pointer' }}
+          className={styles.directionsBtn}
           onClick={() => window.open(`https://maps.google.com?q=${encodeURIComponent(HOTEL.name)}`, '_blank')}
         >
-          <div style={{ background: 'rgba(255,255,255,0.2)', borderRadius: 10, width: 40, height: 40, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <Navigation size={18} color="white" />
-          </div>
+          <div className={styles.actionIcon}><Navigation size={18} color="white" /></div>
           <div style={{ flex: 1 }}>
-            <p style={{ color: 'white', fontWeight: 700, fontSize: 13 }}>Find Your Way Back</p>
-            <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: 11 }}>Get directions to hotel</p>
+            <p className={styles.actionLabel}>Find Your Way Back</p>
+            <p className={styles.actionSub}>GPS directions to hotel</p>
           </div>
           <ChevronRight size={16} color="rgba(255,255,255,0.6)" />
+        </div>
+
+        <div className={styles.ecoCard}>
+          <span style={{ fontSize: 22 }}>🌱</span>
+          <div style={{ flex: 1 }}>
+            <p style={{ fontWeight: 600, fontSize: 13, color: '#166534' }}>Skip today's housekeeping?</p>
+            <p style={{ fontSize: 11, color: '#166534', opacity: 0.8, marginTop: 2 }}>
+              Save water & energy — we'll donate LKR 200 to a local reef project
+            </p>
+          </div>
+          <button
+            onClick={() => alert('Thank you! Your room will not be serviced today. 🌿')}
+            style={{ background: '#16a34a', color: 'white', border: 'none', borderRadius: 8, padding: '7px 12px', fontSize: 11, fontWeight: 700, cursor: 'pointer', fontFamily: 'var(--font-sans)', whiteSpace: 'nowrap' }}
+          >
+            Skip 🌿
+          </button>
         </div>
       </div>
     </div>
